@@ -23,6 +23,8 @@ public class UIController : MonoBehaviour
     OrderManager orderManager;
     [SerializeField]
     CameraController mainCam;
+    [SerializeField]
+    Transform upgradeItems;
     public AnimationCurve vibrateCurve;
     public ProgressBar progressBar;
     public bool phoneOpen = false;
@@ -71,15 +73,16 @@ public class UIController : MonoBehaviour
         }
     }
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Q)) {
-            GameManager.Instance.Cash += 100000;
-        }
-        if(Input.GetKeyDown(KeyCode.W)) {
-            GameManager.Instance.Cash += 10000000;
-        }
-        if(Input.GetKeyDown(KeyCode.E)) {
-            orderManager.timer += 170;
-        }
+        // 테스트용
+        // if(Input.GetKeyDown(KeyCode.Q)) {
+        //     GameManager.Instance.Cash += 100000;
+        // }
+        // if(Input.GetKeyDown(KeyCode.W)) {
+        //     GameManager.Instance.Cash += 10000000;
+        // }
+        // if(Input.GetKeyDown(KeyCode.E)) {
+        //     orderManager.timer += 170;
+        // }
         if(Input.GetButtonDown("Menu") && !onTransition && GameManager.Instance.State == GameState.Play) {
             onTransition = true;
             if(phoneOpen) {
@@ -436,28 +439,28 @@ public class UIController : MonoBehaviour
     void UnlockMessage(int unlock) {
         string unlockText;
         switch (unlock) {
-            case 2:
+            case 1:
                 unlockText = "오토바이를";
                 break;
-            case 3:
+            case 2:
                 unlockText = "소형차를";
                 break;
-            case 4:
+            case 3:
                 unlockText = "트럭을";
                 break;
-            case 5:
+            case 4:
                 unlockText = "경찰차를";
                 break;
-            case 6:
+            case 5:
                 unlockText = "버스를";
                 break;
-            case 7:
+            case 6:
                 unlockText = "탱크를";
                 break;
-            case 8:
+            case 7:
                 unlockText = "비행기를";
                 break;
-            case 9:
+            case 8:
                 unlockText = "공룡을";
                 break;
             default:
@@ -507,6 +510,11 @@ public class UIController : MonoBehaviour
     }
     void Upgrade_app() {
         TurnUpgradeOff();
+        for (int i = 0; i < upgradeItems.childCount; i++) {
+            if (i > GameManager.Instance.unlock) {
+                upgradeItems.GetChild(i).GetComponent<Image>().color = Color.gray;
+            }
+        }
     }
     void TurnUpgradeOff() {
         foreach (GameObject item in informations) {
@@ -514,8 +522,10 @@ public class UIController : MonoBehaviour
         }
     }
     public void UpgradeBtn(int n) {
-        TurnUpgradeOff();
-        informations[n].SetActive(true);
-        player.Change(n);
+        if (GameManager.Instance.unlock >= n) {
+            TurnUpgradeOff();
+            informations[n].SetActive(true);
+            player.Change(n);
+        }
     }
 }

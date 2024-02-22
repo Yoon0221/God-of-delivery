@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
             buildingNum = 0;
             maxOrder = 1;
             unlock = 1;
+            currentUpgrade = 1;
             playDataExist = true;
             UpdateGameState(GameState.Play);
         }
@@ -189,8 +190,6 @@ public class GameManager : MonoBehaviour
             unlock = 7;
         } else if (buildingNum == 3 && buildState == 0 && unlock != 8) {
             unlock = 8;
-        } else if (buildingNum == 4 && buildState == 0 && unlock != 9) {
-            unlock = 9;
         } else {
             unlockMessage = false;
         }

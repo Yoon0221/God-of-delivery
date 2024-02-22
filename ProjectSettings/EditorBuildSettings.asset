@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 8071f992bbc8e0940a9db1c5d539c43e
   - enabled: 1
+    path: Assets/Scenes/HowtoPlay.unity
+    guid: 0fb48db2024895d408e27578afded822
+  - enabled: 1
     path: Assets/Scenes/Building1.unity
     guid: c13bd172c69962548901bc6ad9ee3bce
   - enabled: 1
@@ -60,6 +63,6 @@ EditorBuildSettings:
     path: Assets/Scenes/abandoned/Buy.unity
     guid: 5df02eeec27457e49a38048552770aec
   - enabled: 0
-    path: Assets/Scenes/abandoned/TestScene.unity
+    path: Assets/VOiD1 Gaming - Pixel Cars/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

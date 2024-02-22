@@ -7,6 +7,7 @@ TagManager:
   - Road
   - Grass
   - NPC
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX
@@ -58,6 +59,9 @@ TagManager:
     locked: 0
   - name: BGOver
     uniqueID: 3087761923
+    locked: 0
+  - name: Plane
+    uniqueID: 1903829843
     locked: 0
   - name: UI2
     uniqueID: 1732019629

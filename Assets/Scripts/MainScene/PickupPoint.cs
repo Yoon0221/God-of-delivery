@@ -19,14 +19,14 @@ public class PickupPoint : MonoBehaviour
         gameObject.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D col) {
-        if (col.CompareTag("Player") && orderManager.orders.Find((x) => x.index == orderIndex[0]).state == 0) {
+        if (col.CompareTag("PlayerCollider") && orderManager.orders.Find((x) => x.index == orderIndex[0]).state == 0) {
             enterTime = orderManager.timer;
             belowPlayer = true;
             progressBar.ShowBar();
         }
     }
     private void OnTriggerExit2D(Collider2D col) {
-        if (col.CompareTag("Player") && belowPlayer) {
+        if (col.CompareTag("PlayerCollider") && belowPlayer) {
             belowPlayer = false;
             progressBar.HideBar();
         }

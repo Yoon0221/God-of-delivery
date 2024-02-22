@@ -56,4 +56,9 @@ public class PreStart : MonoBehaviour
     public void Ending() {
         SceneManager.LoadScene("Ending");
     }
+
+    public void gotowhere()
+    {
+        SceneManager.LoadScene("Howtoplay");
+    }
 }

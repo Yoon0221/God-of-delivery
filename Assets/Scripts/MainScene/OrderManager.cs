@@ -212,17 +212,29 @@ public class OrderManager : MonoBehaviour
         arrows.RemoveAt(index);
     }
     //안정성 평가 (0~5의 정수 리턴)
+    int[,] safteyPerUpgrade = new int[,] {
+        {0,1,3,5,6},
+        {0,2,4,6,7},
+        {0,2,4,6,8},
+        {1,3,5,7,9},
+        {0,2,4,6,8},
+        {2,4,6,8,10},
+        {3,5,7,9,12},
+        {9,9,9,9,9},
+        {99,99,99,99,99}
+    };
     int ReviewSaftey(int damage) {
         int point = 0;
-        if (damage <= 0) {
+        int cu = GameManager.Instance.currentUpgrade;
+        if (damage <= safteyPerUpgrade[cu,0]) {
             point = 5;
-        } else if (damage <= 2) {
+        } else if (damage <= safteyPerUpgrade[cu,1]) {
             point = 4;
-        } else if (damage <= 4) {
+        } else if (damage <= safteyPerUpgrade[cu,2]) {
             point = 3;
-        } else if (damage <= 6) {
+        } else if (damage <= safteyPerUpgrade[cu,3]) {
             point = 2;
-        } else if (damage <= 8) {
+        } else if (damage <= safteyPerUpgrade[cu,4]) {
             point = 1;
         } else {
             point = 0;

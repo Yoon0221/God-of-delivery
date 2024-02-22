@@ -26,6 +26,8 @@ public class MapManager : MonoBehaviour
         TileBase tile = map.GetTile(gridPosition);
         if (tile == null)
             return 0;
+        if (!dataFromTiles.ContainsKey(tile))
+            return 0;
         float moveSpeed = dataFromTiles[tile].drag;
         return moveSpeed;
     }

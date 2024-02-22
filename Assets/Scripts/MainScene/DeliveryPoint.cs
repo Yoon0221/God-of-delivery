@@ -18,8 +18,9 @@ public class DeliveryPoint : MonoBehaviour
         fullTime = GameManager.Instance.currentFullTime;
         gameObject.SetActive(true);
     }
+    //플레이어 들어왔을 때
     private void OnTriggerEnter2D(Collider2D col) {
-        if (col.CompareTag("Player")) {
+        if (col.CompareTag("PlayerCollider")) {
             bool pass = true;
             orderManager.orders.FindAll((x) => x.index == orderIndex[0]).ForEach((x) => {if(x.state == 1) pass = false;});
             if (!pass) {
@@ -30,7 +31,7 @@ public class DeliveryPoint : MonoBehaviour
         }
     }
     private void OnTriggerExit2D(Collider2D col) {
-        if (col.CompareTag("Player") && belowPlayer) {
+        if (col.CompareTag("PlayerCollider") && belowPlayer) {
             belowPlayer = false;
             progressBar.HideBar();
         }
